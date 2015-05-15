@@ -48,6 +48,7 @@ else
 # $(EXTRA_SHARED_LIBS) come before $(OS_LIBS), except on AIX.
 EXTRA_SHARED_LIBS += \
 	-L$(DIST)/lib \
+	-L$(SQLITE_LIBS_DIR) \
 	-l$(SQLITE_LIB_NAME) \
 	-L$(NSSUTIL_LIB_DIR) \
 	-lnssutil3 \
