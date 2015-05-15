@@ -80,11 +80,15 @@ ifdef NSS_ENABLE_ZLIB
 
 DEFINES += -DNSS_ENABLE_ZLIB
 
+ifdef ZLIB_INCLUDE_DIR
+INCLUDES += -I$(ZLIB_INCLUDE_DIR)
+endif
+
 # If a platform has a system zlib, set USE_SYSTEM_ZLIB to 1 and
 # ZLIB_LIBS to the linker command-line arguments for the system zlib
 # (for example, -lz) in the platform's config file in coreconf.
 ifdef USE_SYSTEM_ZLIB
-OS_LIBS += $(ZLIB_LIBS)
+OS_LIBS += -L$(ZLIB_LIBS_DIR) $(ZLIB_LIBS)
 else
 ZLIB_LIBS = $(DIST)/lib/$(LIB_PREFIX)zlib.$(LIB_SUFFIX)
 EXTRA_LIBS += $(ZLIB_LIBS)

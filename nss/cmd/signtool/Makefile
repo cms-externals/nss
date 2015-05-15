@@ -26,8 +26,12 @@ include $(CORE_DEPTH)/coreconf/config.mk
 
 include ../platlibs.mk
 
+ifdef ZLIB_INCLUDE_DIR
+INCLUDES += -I$(ZLIB_INCLUDE_DIR)
+endif
+
 ifdef USE_SYSTEM_ZLIB
-OS_LIBS += $(ZLIB_LIBS)
+OS_LIBS += -L$(ZLIB_LIBS_DIR) $(ZLIB_LIBS)
 else
 EXTRA_LIBS += $(ZLIB_LIBS)
 endif
